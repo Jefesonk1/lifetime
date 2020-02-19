@@ -1,0 +1,115 @@
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <link rel="stylesheet" href="style.css">
+    <title>Document</title>
+</head>
+
+<body>
+
+
+    <div class="resultado">
+        <p id="p"></p>
+    </div>
+
+    <form id="formulario">
+
+        <select id="day">
+            <option id="teste" value="" disabled selected>Dia</option>
+            <option id="teste" value="">Dia</option>
+        </select>
+        <select id="month">
+            <option value="" disabled selected>Mês</option>
+        </select>
+        <input type="text" id="year" placeholder="Ano">
+
+        <script>
+            var select = document.getElementById("day");
+            var array = new Array();
+            for (var i = 1; i <= 31; i++) {
+                array.push(i);
+            }
+            for (var i = 0; i < array.length; i++) {
+                var option = document.createElement("OPTION");
+                txt = document.createTextNode(array[i]);
+                option.append(txt);
+                select.insertBefore(option, select.lastChild);
+            }
+
+            var select = document.getElementById("month");
+            var array = new Array();
+            for (var i = 1; i <= 12; i++) {
+                array.push(i);
+            }
+            for (var i = 0; i < array.length; i++) {
+                var option = document.createElement("OPTION");
+                txt = document.createTextNode(array[i]);
+                option.append(txt);
+                select.insertBefore(option, select.lastChild);
+            }
+
+            // 
+            var form = document.getElementById('formulario');
+            var dia = document.getElementById('day');
+            var mes = document.getElementById('month');
+            var ano = document.getElementById('year');
+            var pElem = document.getElementById('p');
+
+            form.addEventListener('submit', function (e) {
+                // alerta o valor do campo
+                console.log();
+                // impede o envio do form
+                e.preventDefault();
+                pElem.innerHTML = "dia = "+dia.value+" mes = "+mes.value+" ano = "+ano.value;
+                var date1 = new Date(ano.value,mes.value-1,dia.value);
+                var date2 = new Date();
+                var Difference_In_Time = date2.getTime() - date1.getTime();
+                var Difference_In_Days = Difference_In_Time / (1000 * 3600 * 24);
+                alert("dia = "+date1.getDate());
+                pElem.innerHTML = "diferença em dias = "+parseInt(Difference_In_Days,10);
+
+            });
+            //
+        </script>
+        <!-- <div>
+        <label for="nascimento"></label>
+        <input type="text" id="nascimento" placeholder="Data de nascimento" pattern="dd/MM/yyyy"/>
+    </div>
+    <div>
+        <label for="nascimento"></label>
+        <input type="text" id="nascimento" placeholder="Hora de nascimento" />
+    </div> -->
+        <div class="button">
+            <button type="submit">Enviar</button>
+        </div>
+    </form>
+
+    <script type="text/javascript">
+        // JavaScript program to illustrate 
+        // calculation of no. of days between two date 
+
+        // To set two dates to two variables 
+        var date1 = new Date("06/30/2019");
+        var date2 = new Date("07/30/2019");
+
+        // To calculate the time difference of two dates 
+        var Difference_In_Time = date2.getTime() - date1.getTime();
+
+        // To calculate the no. of days between two dates 
+        var Difference_In_Days = Difference_In_Time / (1000 * 3600 * 24);
+
+        //To display the final no. of days (result) 
+        document.write("Total number of days between datessss <br>"
+            + date1 + "<br> and <br>"
+            + date2 + " is: <br> "
+            + Difference_In_Days);
+
+    </script>
+
+
+</body>
+
+</html>
