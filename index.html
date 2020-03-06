@@ -19,12 +19,13 @@
 
         <select id="day">
             <option id="teste" value="" disabled selected>Dia</option>
-            <option id="teste" value="">Dia</option>
         </select>
         <select id="month">
             <option value="" disabled selected>Mês</option>
         </select>
-        <input type="text" id="year" placeholder="Ano">
+        <select id="year">
+            <option value="" disabled selected>Ano</option>
+        </select>
 
         <script>
             var select = document.getElementById("day");
@@ -42,6 +43,19 @@
             var select = document.getElementById("month");
             var array = new Array();
             for (var i = 1; i <= 12; i++) {
+                array.push(i);
+            }
+            for (var i = 0; i < array.length; i++) {
+                var option = document.createElement("OPTION");
+                txt = document.createTextNode(array[i]);
+                option.append(txt);
+                select.insertBefore(option, select.lastChild);
+            }
+
+            
+            var select = document.getElementById("year");
+            var array = new Array();
+            for (var i = 1800; i <= 2100; i++) {
                 array.push(i);
             }
             for (var i = 0; i < array.length; i++) {
@@ -85,30 +99,31 @@
         <div class="button">
             <button type="submit">Enviar</button>
         </div>
+
+        <div class="total">
+            <script  type="text/javascript">
+                // JavaScript program to illustrate 
+                // calculation of no. of days between two date 
+        
+                // To set two dates to two variables 
+                var date1 = new Date("06/30/2019");
+                var date2 = new Date("07/30/2019");
+        
+                // To calculate the time difference of two dates 
+                var Difference_In_Time = date2.getTime() - date1.getTime();
+        
+                // To calculate the no. of days between two dates 
+                var Difference_In_Days = Difference_In_Time / (1000 * 3600 * 24);
+        
+                //To display the final no. of days (result) 
+                document.write("Total number of days between datessss <br>"
+                    + date1 + "<br> and <br>"
+                    + date2 + " is: <br> "
+                    + Difference_In_Days);
+        
+            </script>
+        </div>
     </form>
-
-    <script type="text/javascript">
-        // JavaScript program to illustrate 
-        // calculation of no. of days between two date 
-
-        // To set two dates to two variables 
-        var date1 = new Date("06/30/2019");
-        var date2 = new Date("07/30/2019");
-
-        // To calculate the time difference of two dates 
-        var Difference_In_Time = date2.getTime() - date1.getTime();
-
-        // To calculate the no. of days between two dates 
-        var Difference_In_Days = Difference_In_Time / (1000 * 3600 * 24);
-
-        //To display the final no. of days (result) 
-        document.write("Total number of days between datessss <br>"
-            + date1 + "<br> and <br>"
-            + date2 + " is: <br> "
-            + Difference_In_Days);
-
-    </script>
-
 
 </body>
 
